@@ -2,16 +2,20 @@ import React, { useContext, useState } from "react"
 import { TaskContext } from "../context/TaskContext"
 
 const Form = () => {
-  const { state, addTaskToList } = useContext(TaskContext)
-  const [task, setTask] = useState("")
+  const { addTaskToList, inputValue, setInputValue, isEdit, updateTask } = useContext(TaskContext)
 
   const handleChange = e => {
-    setTask(e.target.value)
+    setInputValue(e.target.value)
   }
 
   const handleSubmit = e => {
     e.preventDefault()
-    addTaskToList(task)
+
+    if (!inputValue || inputValue.length <= 5) return // Show error message
+
+    !isEdit ? addTaskToList(inputValue) : updateTask(isEdit, inputValue)
+
+    setInputValue("")
   }
 
   return (
@@ -25,10 +29,10 @@ const Form = () => {
               id="task"
               className="form-control"
               placeholder="Task name"
-              value={task}
+              value={inputValue}
               onChange={handleChange}
             />
-            <button className="btn btn-primary mx-2">Create</button>
+            <button className="btn btn-primary mx-2">{!isEdit ? "Create" : "Update"}</button>
           </form>
         </div>
       </div>

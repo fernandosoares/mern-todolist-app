@@ -3,9 +3,8 @@ import { TaskContext } from "../context/TaskContext"
 import TaskItem from "./TaskItem"
 
 const TaskList = () => {
-  const { state } = useContext(TaskContext)
-  const { tasks } = state
-
+  const { tasks } = useContext(TaskContext)
+  console.log(tasks)
   return (
     <div className="container">
       <div className="row justify-content-center">
