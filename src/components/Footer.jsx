@@ -5,7 +5,7 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-12 col-md-6 text-center mt-5">
+          <div className="col-12 col-md-6 text-center my-5">
             <small>Developed by - Fernando Soares</small>
           </div>
         </div>
